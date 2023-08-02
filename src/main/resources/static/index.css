@@ -1,0 +1,64 @@
+/* Appliquer un fond coloré et un dégradé */
+body {
+    background-color: #ffcc00;
+    background-image: linear-gradient(to bottom, #ffcc00, #ff6600);
+}
+
+/* Styliser le titre */
+/* Styliser le titre */
+h1 {
+    color: white; /* Changer la couleur du texte en blanc */
+    font-size: 36px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* Masquer l'image au milieu */
+.col-md-6 img {
+    display: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: url('image/nature.jpg') center/cover fixed no-repeat;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    position: relative;
+}
+
+
+
+
+
+
+/* Ajoutez d'autres styles au besoin pour le formulaire, les étiquettes, etc. */
+
+
+/* Styliser les étiquettes des champs de saisie */
+.form-label {
+    color: white;
+}
+
+/* Styliser les champs de saisie */
+.form-control {
+    border-color: #ff9900;
+}
+
+/* Styliser le bouton de connexion */
+.btn-primary {
+    background-color: #ff3300;
+    border-color: #ff3300;
+    color: white;
+}
+.form-control {
+    width: 360px; /* Vous pouvez ajuster cette valeur selon vos préférences */
+}
+
+/* Centrer le formulaire */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
