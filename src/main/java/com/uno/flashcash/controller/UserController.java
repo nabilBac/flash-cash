@@ -28,14 +28,9 @@ public class UserController {
 
     @PostMapping("/signup")
     public ModelAndView processRequest(@ModelAttribute("signupForm") SignUpForm form) {
-
-        userService.registration(form);{
-            // L'utilisateur existe déjà, afficher un message d'erreur ou rediriger vers une autre page
+        userService.registration(form);
             return new ModelAndView("signin");
         }
-
-    }
-
 
     @GetMapping("/signup")
     public ModelAndView showRegisterForm() {
@@ -45,6 +40,4 @@ public class UserController {
     public String logOff(Model model){
         return "home";
     }
-
-
 }

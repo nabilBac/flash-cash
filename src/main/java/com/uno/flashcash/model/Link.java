@@ -11,7 +11,7 @@ public class Link {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
-    @ManyToMany
+    @ManyToOne
     User user1;
     @ManyToOne
     User user2;
