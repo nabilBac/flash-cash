@@ -1,4 +1,4 @@
-package com.uno.flashcash.service;
+/*package com.uno.flashcash.service;
 
 import com.uno.flashcash.model.Transfer;
 import com.uno.flashcash.model.User;
@@ -29,4 +29,4 @@ public class TransferService {
     }
 
     // Ajoutez d'autres méthodes de service si nécessaire pour gérer les transferts
-}
+}*/

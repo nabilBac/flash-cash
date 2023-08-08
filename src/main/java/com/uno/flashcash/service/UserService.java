@@ -1,44 +1,39 @@
 package com.uno.flashcash.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import com.uno.flashcash.model.User;
+import com.uno.flashcash.model.UserAccount;
 import com.uno.flashcash.repository.UserRepository;
+import com.uno.flashcash.service.form.SignUpForm;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
-import java.util.List;
-
-@Service
+@Service ("userService")
 public class UserService {
 
+    private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
+  //  private final AccountRepository accountRepository;
 
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(PasswordEncoder passwordEncoder, UserRepository userRepository) {
+        this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
+
     }
 
-    // Méthode pour enregistrer un nouvel utilisateur dans la base de données
-    public void saveUser(User user) {
-        userRepository.save(user);
+    public User registration(SignUpForm form) {
+        User user = new User();
+        UserAccount account = new UserAccount();
+        account.setAmount(0.0);
+        user.setUserAccount(account);
+        user.setFirstName(form.getFirstname());
+        user.setLastName(form.getLastname());
+        user.setEmail(form.getEmail());
+        user.setPassword(passwordEncoder.encode(form.getPassword()));
+        return userRepository.save(user);
     }
+    public Iterable<User> getUser(){return userRepository.findAll();}
 
-    // Méthode pour trouver un utilisateur par son adresse e-mail
-    public User findByEmail(String email) {
-        return userRepository.findByEmail(email);
-    }
 
-    // Méthode pour authentifier un utilisateur par son adresse e-mail et son mot de passe
-    public boolean authenticateUser(String email, String password) {
-        User user = userRepository.findByEmail(email);
-
-        // L'utilisateur existe et le mot de passe correspond
-        return user != null && user.getPassword().equals(password);
-    }
-
-    // Méthode pour obtenir la liste de tous les utilisateurs
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
-    }
-
-    // Ajoutez d'autres méthodes de service si nécessaire pour gérer les utilisateurs
 }
