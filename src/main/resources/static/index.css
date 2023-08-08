@@ -1,64 +1,81 @@
-/* Appliquer un fond coloré et un dégradé */
+/* Appliquer un fond moderne en dégradé de couleurs vives */
 body {
-    background-color: #ffcc00;
-    background-image: linear-gradient(to bottom, #ffcc00, #ff6600);
+    background: linear-gradient(135deg, #ff6a00, #1e90ff);
 }
 
-/* Styliser le titre */
-/* Styliser le titre */
-h1 {
-    color: white; /* Changer la couleur du texte en blanc */
-    font-size: 36px;
+/* Centrer verticalement le formulaire */
+.background-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Style pour le conteneur du formulaire */
+.form-container {
+    background-color: rgba(255, 255, 255, 0.9); /* Légère opacité au fond blanc */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2); /* Ombre légère */
+    width: 70%; /* Ajustez la largeur comme vous le souhaitez */
+    max-width: 600px; /* Limiter la largeur maximale */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    margin-top: 50px;
+    margin: 50px auto; /* Ajustez les marges pour centrer le formulaire */
 }
 
-/* Masquer l'image au milieu */
-.col-md-6 img {
-    display: none;
+/* Styliser le titre du formulaire */
+.form-container h1 {
+    color: #000; /* Texte en noir */
+    font-size: 32px;
+    margin-bottom: 20px;
 }
-
-body {
-    margin: 0;
-    padding: 0;
-    background: url('image/nature.jpg') center/cover fixed no-repeat;
-    font-family: Arial, sans-serif;
-    overflow: hidden;
-    position: relative;
-}
-
-
-
-
-
-
-/* Ajoutez d'autres styles au besoin pour le formulaire, les étiquettes, etc. */
-
 
 /* Styliser les étiquettes des champs de saisie */
 .form-label {
-    color: white;
+    color: #333;
+    font-weight: bold;
 }
 
 /* Styliser les champs de saisie */
 .form-control {
-    border-color: #ff9900;
+    border: 1px solid #007bff; /* Bordure bleue autour des champs */
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%; /* Remplir la largeur du conteneur */
 }
 
 /* Styliser le bouton de connexion */
 .btn-primary {
-    background-color: #ff3300;
-    border-color: #ff3300;
+    background-color: #007bff;
+    border-color: #007bff;
     color: white;
-}
-.form-control {
-    width: 360px; /* Vous pouvez ajuster cette valeur selon vos préférences */
+    padding: 12px 24px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Transition en douceur au survol */
 }
 
-/* Centrer le formulaire */
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+/* Styliser le bouton de connexion au survol */
+.btn-primary:hover {
+    background-color: #0056b3; /* Bleu légèrement plus foncé */
+}
+/* styles.css */
+
+.custom-logo {
+    border: none; /* Supprime la bordure */
+    outline: none; /* Supprime le contour */
+}
+
+
+/* Logo personnalisé */
+.logo {
+    width: 150px; /* Ajustez la taille du logo */
+    height: auto; /* Hauteur automatique pour maintenir les proportions */
+    margin-bottom: 20px;
 }
