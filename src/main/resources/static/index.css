@@ -241,11 +241,12 @@ body {
 }
 
 /* Style pour le pied de page */
-.footer {
+.footer3 {
     text-align: center;
     padding: 20px 0;
     background-color: #fff;
     box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 100px; /* Ajustez cette valeur selon vos besoins */
 }
 
 
