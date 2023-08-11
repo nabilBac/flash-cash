@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add IBAN</title>
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <link rel="stylesheet" href="index.css">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+</nav>
+
+<div class="container mt-5 minimalist-form">
+  <h1 class="text-center">Add IBAN</h1>
+
+  <form th:action="@{/add-iban}" th:object="${addIbanForm}" method="POST" class="minimalist-form"> <!-- Ajoutez la classe minimalist-form ici -->
+    <div class="form-group">
+      <label for="iban" class="minimalist-label">IBAN:</label> <!-- Ajoutez la classe minimalist-label ici -->
+      <input type="text" th:field="*{iban}" class="form-control minimalist-input" id="iban" name="iban" required> <!-- Ajoutez la classe minimalist-input ici -->
+    </div>
+
+    <!-- Autres champs du formulaire si nécessaire -->
+
+    <button type="submit" class="btn btn-primary minimalist-button">Submit</button> <!-- Ajoutez la classe minimalist-button ici -->
+  </form>
+</div>
+
+<footer class="footer mt-5 mb-5"> <!-- Ajoutez la classe mb-5 pour ajouter de la marge en bas -->
+  <p>&copy; 2023 Flash Cash. Tous droits réservés.</p>
+</footer>
+
+<!-- ... (votre lien vers bootstrap.min.js si nécessaire) ... -->
+</body>
+</html>

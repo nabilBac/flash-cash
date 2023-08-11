@@ -3,24 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In</title>
+    <title>Flash Cash - Profil</title>
     <link rel="stylesheet" href="bootstrap.min.css">
-    <link rel="stylesheet" href="index.css"> <!-- Ajoutez le lien vers votre fichier CSS personnalisé -->
+    <link rel="stylesheet" href="index.css">
 </head>
-<body>
-<table class="table text-center">
-    <thead>
-    <tr>
-        <th scope="col">User</th>
-        <th scope="col">Amount</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td th:text="${user.email}"></td>
-        <td th:text="${user.userAccount.amount}"></td>
-    </tr>
-    </tbody>
-</table>
+<body class="custom-background">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container4">
+
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Transfert</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <h1 class="text-center">My Profile</h1>
+
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <h3>Add cash to Flash Cash</h3>
+            <p>Top up your account balance by adding cash to your Flash Cash wallet.</p>
+            <button class="btn btn-primary">Add Cash</button>
+        </div>
+        <div class="col-md-4">
+            <h3>Transfer to Your Bank</h3>
+            <p>Transfer money from your Flash Cash wallet to your linked bank account.</p>
+            <button class="btn btn-primary">Transfer to Bank</button>
+        </div>
+        <div class="col-md-4">
+            <h3>Add IBAN</h3>
+            <p>Link your bank account by adding your IBAN to enable easy transfers.</p>
+            <a th:href="@{/add-iban}" class="btn btn-primary">Add IBAN</a>
+        </div>
+
+    </div>
+
+    <h2 class="mt-5">My Account Balance</h2>
+    <ul>
+        <li><strong>User:</strong> <span th:text="${user.email}"></span></li>
+        <li><strong>Amount:</strong> <span th:text="${user.userAccount.amount}"></span></li>
+    </ul>
+</div>
+
+<footer class="footer mt-5">
+    <p>&copy; 2023 Flash Cash. Tous droits réservés.</p>
+</footer>
+
+<!-- ... (votre lien vers bootstrap.min.js si nécessaire) ... -->
 </body>
 </html>

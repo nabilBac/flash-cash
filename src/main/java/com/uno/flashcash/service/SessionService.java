@@ -9,10 +9,12 @@ import org.springframework.stereotype.Service;
 public class SessionService {
     private final UserRepository userRepository;
 
+
+
     public SessionService(UserRepository userRepository){
         this.userRepository = userRepository;
     }
-    public User sessionUser(){
+    public  User sessionUser(){
         org.springframework.security.core.userdetails.User springUser =
         (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return userRepository.findUserByMail(springUser.getUsername())
