@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.List;
+import com.uno.flashcash.model.UserAccount;
+
 
 
 @Data
@@ -78,4 +80,12 @@ public class User {
     public void setUserAccount(UserAccount userAccount) {
         this.userAccount = userAccount;
     }
+
+
+
 }
+
+
+
+
+

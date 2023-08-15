@@ -1,29 +1,38 @@
 package com.uno.flashcash.controller;
 
-import com.uno.flashcash.service.UserService;
+import com.uno.flashcash.service.TransferService;
+import com.uno.flashcash.service.SessionService;
+import com.uno.flashcash.service.form.TransferToBankForm;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class TransferController {
 
+    private final TransferService transferService;
+    private final SessionService sessionService;
 
-    private final UserService userService; // Injectez le service UserService approprié
-
-    public TransferController(UserService userService) {
-        this.userService = userService;
+    @Autowired
+    public TransferController(TransferService transferService, SessionService sessionService) {
+        this.transferService = transferService;
+        this.sessionService = sessionService;
     }
 
+    @GetMapping("transfer-form") // Utilisez une méthode GET pour afficher le formulaire
+    public String showTransferForm(Model model) {
+        model.addAttribute("transferToBankForm", new TransferToBankForm());
+        return "transfer-form"; // Assurez-vous d'avoir un template "transfer-form.html"
+    }
 
-//    private final TransferService transferService; // Injectez le service TransferService approprié
+    @PostMapping("transfer-to-bank")
+    public ModelAndView transferCashToBank(@ModelAttribute("transferToBankForm") TransferToBankForm form) {
+        transferService.transferToBank(form);
 
-//    @GetMapping("/transfer")
-//    public String showTransferForm(Model model) {
-//        // Chargez les informations nécessaires pour afficher le formulaire de transfert
-//        // Par exemple, récupérez la liste des utilisateurs
-//        model.addAttribute("users", userService.getAllUsers());
-//        model.addAttribute("transfer", new Transfer()); // Créez un nouvel objet Transfer pour lier le formulaire
-//        return "transfer_form"; // Assurez-vous d'avoir un fichier HTML correspondant
-//    }
-
-
+        return new ModelAndView("redirect:/profile"); // Redirige vers la page de profil après le transfert
+    }
 }
