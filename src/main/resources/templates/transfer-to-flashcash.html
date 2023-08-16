@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bank Payment</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="text-center">Bank Payment</h1>
+
+    <form th:action="@{/transfer-to-flashcash}" method="post" class="minimalist-form">
+        <div class="form-group">
+            <label for="cardNumber" class="minimalist-label">Card Number:</label>
+            <input type="text" id="cardNumber" name="cardNumber" class="form-control minimalist-input" required>
+        </div>
+
+        <div class="form-group">
+            <label for="expirationDate" class="minimalist-label">Expiration Date:</label>
+            <input type="text" id="expirationDate" name="expirationDate" class="form-control minimalist-input" required>
+        </div>
+
+        <!-- Autres champs du formulaire de paiement -->
+
+        <button type="submit" class="btn btn-primary minimalist-button">Pay Now</button>
+    </form>
+</div>
+
+
+</body>
+</html>

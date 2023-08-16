@@ -2,32 +2,40 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Transfer to Bank</title>
     <link rel="stylesheet" href="bootstrap.min.css">
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-<!-- Dans votre fichier HTML -->
-<div class="container">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Ajoutez le contenu de la barre de navigation si nécessaire -->
+</nav>
 
+<div class="container mt-5">
+    <h1 class="text-center">Transfer to Bank</h1>
 
+    <form action="@/{transfer-to-bank}" method="post" th:action="@{/transfer-to-bank}" th:object="${transferToBankForm}" class="minimalist-form">
+        <div class="form-group">
+            <label for="iban" class="minimalist-label">IBAN:</label>
+            <input type="text" id="iban" name="iban" th:field="*{iban}" class="form-control minimalist-input" required>
+        </div>
 
-    <form action="/transfer-to-bank" method="post" th:object="${transferToBankForm}">
-        <label for="iban">IBAN:</label>
-        <input type="text" id="iban" name="iban" th:field="*{iban}" required><br>
+        <div class="form-group">
+            <label for="amount" class="minimalist-label">Amount:</label>
+            <input type="number" id="amount" name="amount" th:field="*{amount}" class="form-control minimalist-input" required>
+        </div>
 
-        <label for="amount">Amount:</label>
-        <input type="number" id="amount" name="amount" th:field="*{amount}" required><br>
-
-        <button type="submit">Transfer</button>
+        <button type="submit" class="btn btn-primary minimalist-button">Transfer</button>
     </form>
 
     <!-- Votre contenu ici -->
+
 </div>
 
+<footer class="footer mt-5 mb-5">
+    <p>&copy; 2023 Flash Cash. All rights reserved.</p>
+</footer>
 
-
-
-
+<script src="bootstrap.min.js"></script> <!-- Assurez-vous que le lien vers bootstrap.min.js est correct -->
 </body>
 </html>
