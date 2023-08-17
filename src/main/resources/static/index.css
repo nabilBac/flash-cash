@@ -392,6 +392,52 @@ ul li strong {
   background-color: #0056b3;
 }
 /*-----------------------------------------------------*/
+/* styles.css */
+
+/* Style minimaliste pour le formulaire "Bank Payment" */
+.container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.text-center {
+  margin-bottom: 20px;
+}
+
+.minimalist-form {
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.minimalist-label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.minimalist-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 100%;
+}
+
+.minimalist-button {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 3px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.minimalist-button:hover {
+  background-color: #0056b3;
+}
+
 
 
 

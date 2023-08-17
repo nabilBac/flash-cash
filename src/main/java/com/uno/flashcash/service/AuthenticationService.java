@@ -1,4 +1,4 @@
-package com.uno.flashcash.service.form;
+package com.uno.flashcash.service;
 
 
 import com.uno.flashcash.model.User;

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flash Cash - Transfer Money</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body class="custom-background">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- ... (votre code de navigation) ... -->
+</nav>
+
+<div class="container mt-5">
+    <h1 class="text-center">Transfer Money</h1>
+
+    <div class="row mt-4">
+        <div class="col-md-6 offset-md-3">
+            <form action="/transfer-to-contact" method="post" class="needs-validation" novalidate>
+                <div class="form-group">
+                    <label for="senderEmail">Your Email</label>
+                    <input type="email" class="form-control" id="senderEmail" name="senderEmail" required>
+                    <div class="invalid-feedback">
+                        Please enter your email.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="recipientEmail">Recipient's Email</label>
+                    <select class="form-control" id="recipientEmail" name="recipientEmail" required>
+                        <option value="" disabled selected>Select recipient</option>
+                        <option th:each="email : ${linksEmail}" th:value="${email}" th:text="${email}"></option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Please select a recipient.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <input type="number" class="form-control" id="amount" name="amount" required>
+                    <div class="invalid-feedback">
+                        Please enter the amount to transfer.
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Transfer</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<footer class="footer mt-5">
+    <p>&copy; 2023 Flash Cash. All rights reserved.</p>
+</footer>
+
+<!-- ... (votre lien vers bootstrap.min.js si nécessaire) ... -->
+</body>
+</html>

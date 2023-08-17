@@ -9,6 +9,8 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
 
-   @Query(value = "SELECT u FROM User u LEFT JOIN FETCH u.links WHERE u.email=:email")
-  public Optional<User> findUserByMail(String email);
+    @Query(value = "SELECT u FROM User u LEFT JOIN FETCH u.links WHERE u.email=:email")
+    public  Optional<User> findUserByMail(String email) ;
+
+
 }

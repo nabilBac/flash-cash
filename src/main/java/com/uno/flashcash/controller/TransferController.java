@@ -1,8 +1,10 @@
 package com.uno.flashcash.controller;
 
 import com.uno.flashcash.model.User;
+import com.uno.flashcash.service.LinkService;
 import com.uno.flashcash.service.SessionService;
 import com.uno.flashcash.service.TransferService;
+import com.uno.flashcash.service.form.TransferForm;
 import com.uno.flashcash.service.form.TransferToBankForm;
 import com.uno.flashcash.service.form.TransferToFlashCashForm;
 import org.springframework.stereotype.Controller;
@@ -12,18 +14,22 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
 public class TransferController {
 
     private final TransferService transferService;
     private final SessionService sessionService;
+    private final LinkService linkService;
 
 
 
-    public TransferController(TransferService transferService, SessionService sessionService) {
+    public TransferController(TransferService transferService, SessionService sessionService, LinkService linkService) {
         this.transferService = transferService;
         this.sessionService = sessionService;
 
+        this.linkService = linkService;
     }
 
     @GetMapping("/transfer-to-bank") // Utilisez une méthode GET pour afficher le formulaire
@@ -40,6 +46,20 @@ public class TransferController {
 
         return new ModelAndView("/profile"); // Redirige vers la page de profil après le transfert
     }
+    @GetMapping("/transfer-to-contact")
+    public ModelAndView transferToContact(Model model){
+        List<String> linksEmail = linkService.findLinksEmail();
+        model.addAttribute("linksEmail", linksEmail);
+        return new ModelAndView("transfer-to-contact","transferForm", new TransferForm());
+    }
+//    @PostMapping("/transfer-to-contact")
+//    public ModelAndView transfer(Model model, @ModelAttribute("transferForm")TransferForm form){
+//        transferService.transfer(form);
+//        List<Transfer> transfers = transferService.findTransactions();
+//        model.addAttribute("transfer");
+//        return new ModelAndView("transfer");
+//
+//    }
 
 
     @GetMapping("/transfer-to-flashcash")
@@ -49,12 +69,7 @@ public class TransferController {
         model.addAttribute("user", sessionUser);
         return "transfer-to-flashcash"; // Le nom de la vue HTML sans l'extension (.html)
     }
-//    @GetMapping("/transfer-to-flashcash")
-//    public ModelAndView showWithdrawCash(Model model) {
-//        User user = sessionService.sessionUser();
-//        model.addAttribute("user", user);
-//        return new ModelAndView("transfer-to-flashcash");
-//    }
+
 
     @PostMapping("/transfer-to-flashcash")
     public ModelAndView showPaymentForm(Model model, @ModelAttribute("transferToFlashCashForm") TransferToFlashCashForm form){
@@ -65,6 +80,7 @@ public class TransferController {
         return new ModelAndView("/profile");
 
     }
+
 
 
 
