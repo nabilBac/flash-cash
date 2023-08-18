@@ -17,31 +17,44 @@
 
     <div class="row mt-4">
         <div class="col-md-6 offset-md-3">
-            <form action="/transfer-to-contact" method="post" class="needs-validation" novalidate>
-                <div class="form-group">
-                    <label for="senderEmail">Your Email</label>
-                    <input type="email" class="form-control" id="senderEmail" name="senderEmail" required>
-                    <div class="invalid-feedback">
-                        Please enter your email.
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="recipientEmail">Recipient's Email</label>
-                    <select class="form-control" id="recipientEmail" name="recipientEmail" required>
-                        <option value="" disabled selected>Select recipient</option>
-                        <option th:each="email : ${linksEmail}" th:value="${email}" th:text="${email}"></option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Please select a recipient.
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="amount">Amount</label>
-                    <input type="number" class="form-control" id="amount" name="amount" required>
-                    <div class="invalid-feedback">
-                        Please enter the amount to transfer.
-                    </div>
-                </div>
+            <form th:action="@{/transfer-to-contact}"th:object="${transferForm}"  method="post" class="needs-validation" novalidate>
+
+
+
+                 <div class="form-group">
+                                                                                    <!--                    <label for="senderEmail">Your Email</label>-->
+                        <select th:field="*{contactEmail}" >
+                            <option value="default">chose a contact</option>
+                            <option th:each="email :${linksEmail}"th:value="${email}"th:utext="${email}"/>
+                        </select>
+                         <div class="pricing p-3 rounded mt-4 d-flex justify-content-between" >
+                             <input type="text"th:field="*{amount}"
+                                    class=""
+
+
+
+                         </div>                                                                          <!--                    <input type="email" class="form-control" id="senderEmail" name="senderEmail" required>-->
+                                                                                                                    <!--                    <div class="invalid-feedback">-->
+                                                                                                                    <!--                        Please enter your email.-->
+                                                                                                                    <!--                    </div>-->
+                                                </div>
+<!--                <div class="form-group">-->
+<!--                    <label for="recipientEmail">Recipient's Email</label>-->
+<!--                    <select class="form-control" id="recipientEmail" name="recipientEmail" required>-->
+<!--                        <option value="" disabled selected>Select recipient</option>-->
+<!--                        <option th:each="email : ${linksEmail}" th:value="${email}" th:text="${email}"></option>-->
+<!--                    </select>-->
+<!--                    <div class="invalid-feedback">-->
+<!--                        Please select a recipient.-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label for="amount">Amount</label>-->
+<!--                    <input type="number" class="form-control" id="amount" name="amount" required>-->
+<!--                    <div class="invalid-feedback">-->
+<!--                        Please enter the amount to transfer.-->
+<!--                    </div>-->
+<!--                </div>-->
                 <button type="submit" class="btn btn-primary">Transfer</button>
             </form>
         </div>

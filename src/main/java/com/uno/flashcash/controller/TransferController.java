@@ -1,5 +1,6 @@
 package com.uno.flashcash.controller;
 
+import com.uno.flashcash.model.Transfer;
 import com.uno.flashcash.model.User;
 import com.uno.flashcash.service.LinkService;
 import com.uno.flashcash.service.SessionService;
@@ -52,14 +53,14 @@ public class TransferController {
         model.addAttribute("linksEmail", linksEmail);
         return new ModelAndView("transfer-to-contact","transferForm", new TransferForm());
     }
-//    @PostMapping("/transfer-to-contact")
-//    public ModelAndView transfer(Model model, @ModelAttribute("transferForm")TransferForm form){
-//        transferService.transfer(form);
-//        List<Transfer> transfers = transferService.findTransactions();
-//        model.addAttribute("transfer");
-//        return new ModelAndView("transfer");
-//
-//    }
+    @PostMapping("/transfer-to-contact")
+    public ModelAndView transfer(Model model, @ModelAttribute("transferForm")TransferForm form){
+        transferService.transfer(form);
+        List<Transfer> transfers = transferService.findTransactions();
+        model.addAttribute("transfer");
+        return new ModelAndView("transfer");
+
+    }
 
 
     @GetMapping("/transfer-to-flashcash")

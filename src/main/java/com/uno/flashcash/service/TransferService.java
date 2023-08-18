@@ -1,20 +1,32 @@
 package com.uno.flashcash.service;
 
+import com.uno.flashcash.model.Transfer;
+import com.uno.flashcash.model.User;
+import com.uno.flashcash.repository.TransferRepository;
 import com.uno.flashcash.repository.UserAccountRepository;
+import com.uno.flashcash.repository.UserRepository;
+import com.uno.flashcash.service.form.TransferForm;
 import com.uno.flashcash.service.form.TransferToBankForm;
 import com.uno.flashcash.service.form.TransferToFlashCashForm;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class TransferService {
     private final UserAccountRepository userAccountRepository;
     private final SessionService sessionService;
+    private final UserRepository userRepository;
+    private final TransferRepository transferRepository;
 
 
 
-    public TransferService(UserAccountRepository userAccountRepository, SessionService sessionService) {
+    public TransferService(UserAccountRepository userAccountRepository, SessionService sessionService, UserRepository userRepository, TransferRepository transferRepository) {
         this.userAccountRepository = userAccountRepository;
         this.sessionService = sessionService;
+        this.userRepository = userRepository;
+        this.transferRepository = transferRepository;
     }
 
 
@@ -36,24 +48,28 @@ public class TransferService {
 
     }
 
-//    public void transfer(TransferForm form) {
-//        User sessionUser = sessionService.sessionUser();
-//
-//        if (sessionUser.getUserAccount().getAmount() >= form.getAmount()) {
-//            sessionUser.getUserAccount().minus(form.getAmount());
-//            userAccountRepository.save(sessionUser.getUserAccount());
-//
-//            Transfer transfer = new Transfer();
-////            transfer.setSender(sessionUser);
-////            transfer.setRecipientEmail(form.getRecipientEmail());
-////            transfer.setAmount(form.getAmount());
-////            transferRepository.save(transfer);
-//        } else {
-//            // Gérer le cas de solde insuffisant
-//        }
-//    }
-//
-//    public List<Transfer> findTransactions() {
-//        return transferRepository.findAll(); // Supposons que vous ayez une méthode findAll dans TransferRepository
-//    }
+    public void transfer(TransferForm form) {
+        if (form!= null){
+            User to = userRepository.findUserByMail(form.getContactEmail())
+                    .orElseThrow(()-> new RuntimeException("user with email not found"));
+            Transfer transfer = new Transfer();
+            transfer.setDate(LocalDateTime.now());
+            transfer.setAmountBeforeFee(form.getAmount());
+            transfer.setAmountAfterFee(form.getAmount() + form.getAmount() * 0.0005);
+            transfer.setFrom(sessionService.sessionUser());
+            transfer.setTo(to);
+
+
+
+            userAccountRepository.save(sessionService.sessionUser().getUserAccount().minus(transfer.getAmountAfterFee()));
+            userAccountRepository.save(to.getUserAccount().plus(transfer.getAmountBeforeFee()));
+            transferRepository.save(transfer);
+
+
+       }
+    }
+
+  public List<Transfer> findTransactions() {
+       return transferRepository.findAll(); // Supposons que vous ayez une méthode findAll dans TransferRepository
+  }
 }
