@@ -214,28 +214,11 @@
                     </div>
 
                     <form th:action="@{/transfer-to-flashcash}" th:object="${transferToFlashCashForm}" method="post" class="minimalist-form">
+
                         <div class="form-group">
-                            <label for="cardNumber" class="minimalist-label">Amount:</label>
-                            <input type="text" id="cardNumber" name="cardNumber" class="form-control minimalist-input" required>
+                            <label for="amount" class="minimalist-label">Amount:</label>
+                            <input type="number" id="amount" name="amount" th:field="*{amount}" class="form-control minimalist-input" required>
                         </div>
-
-<!--                        <div class="form-group">-->
-<!--                            <label for="expirationDate" class="minimalist-label">Expiration Date:</label>-->
-<!--                            <input type="text" id="expirationDate" name="expirationDate" class="form-control minimalist-input" required>-->
-<!--                        </div>-->
-                        <!--        <select th:field="*{contactEmail}">-->
-                        <!--            <option value="default">chose a contact</option>-->
-                        <!--            <option th:each="email : ${linksEmail}"th:value="${email}"th:utext="${email}"/>-->
-                        <!--        </select>-->
-                        <!--        <div class="pricing p-3 rounded mt-4 d-flex justify-content-between">-->
-                        <!--            <input type="text" th:field="*{amount}"-->
-                        <!--                   class="form-control floatingInput"-->
-                        <!--                   id="floatingInputAmount" placeholder="amount"/>-->
-                        <!--            <label for="floatingInputAmount"></label>-->
-                        <!--        </div>-->
-
-
-                        <!-- Autres champs du formulaire de paiement -->
 
                         <button type="submit" class="btn btn-primary minimalist-button">Pay Now</button>
                     </form>

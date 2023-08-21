@@ -18,7 +18,7 @@ public class ContactController {
 
     @GetMapping()
     public ModelAndView getAddConnectionForm(Model model){
-        return new ModelAndView("addContact", "addContactForm", new AddContactForm("email"));
+        return new ModelAndView("addContact", "addContactForm", new AddContactForm());
     }
     @PostMapping()
     public ModelAndView addConnection(@ModelAttribute("addContactForm") AddContactForm form){

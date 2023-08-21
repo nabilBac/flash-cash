@@ -1,10 +1,13 @@
 package com.uno.flashcash.service;
 
+import com.uno.flashcash.model.Link;
 import com.uno.flashcash.model.Transfer;
 import com.uno.flashcash.model.User;
+import com.uno.flashcash.repository.LinkRepository;
 import com.uno.flashcash.repository.TransferRepository;
 import com.uno.flashcash.repository.UserAccountRepository;
 import com.uno.flashcash.repository.UserRepository;
+import com.uno.flashcash.service.form.AddContactForm;
 import com.uno.flashcash.service.form.TransferForm;
 import com.uno.flashcash.service.form.TransferToBankForm;
 import com.uno.flashcash.service.form.TransferToFlashCashForm;
@@ -20,13 +23,16 @@ public class TransferService {
     private final UserRepository userRepository;
     private final TransferRepository transferRepository;
 
+    private final LinkRepository linkRepository;
 
 
-    public TransferService(UserAccountRepository userAccountRepository, SessionService sessionService, UserRepository userRepository, TransferRepository transferRepository) {
+
+    public TransferService(UserAccountRepository userAccountRepository, SessionService sessionService, UserRepository userRepository, TransferRepository transferRepository, LinkRepository linkRepository) {
         this.userAccountRepository = userAccountRepository;
         this.sessionService = sessionService;
         this.userRepository = userRepository;
         this.transferRepository = transferRepository;
+        this.linkRepository = linkRepository;
     }
 
 
@@ -71,5 +77,16 @@ public class TransferService {
 
   public List<Transfer> findTransactions() {
        return transferRepository.findAll(); // Supposons que vous ayez une méthode findAll dans TransferRepository
+  }
+  public void addContactForm(AddContactForm form){
+
+        Link link=new Link();
+        link.setUser1(sessionService.sessionUser());
+        link.setUser2(userRepository.findUserByMail(form.getEmail()).get());
+
+
+
+
+        linkRepository.save(link);
   }
 }

@@ -5,9 +5,7 @@ import com.uno.flashcash.model.User;
 import com.uno.flashcash.service.LinkService;
 import com.uno.flashcash.service.SessionService;
 import com.uno.flashcash.service.TransferService;
-import com.uno.flashcash.service.form.TransferForm;
-import com.uno.flashcash.service.form.TransferToBankForm;
-import com.uno.flashcash.service.form.TransferToFlashCashForm;
+import com.uno.flashcash.service.form.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,10 +31,10 @@ public class TransferController {
         this.linkService = linkService;
     }
 
-    @GetMapping("/transfer-to-bank") // Utilisez une méthode GET pour afficher le formulaire
+    @GetMapping("/transfer-to-bank")
     public String showTransferForm(Model model) {
         model.addAttribute("transferToBankForm", new TransferToBankForm());
-        return "transfer-to-bank"; // Assurez-vous d'avoir un template "transfer-form.html"
+        return "transfer-to-bank";
     }
 
     @PostMapping("/transfer-to-bank")
@@ -57,8 +55,20 @@ public class TransferController {
     public ModelAndView transfer(Model model, @ModelAttribute("transferForm")TransferForm form){
         transferService.transfer(form);
         List<Transfer> transfers = transferService.findTransactions();
-        model.addAttribute("transfer");
+        model.addAttribute("transfer", transfers);
         return new ModelAndView("transfer");
+
+    }
+    @GetMapping("/add-friend")
+    public ModelAndView transfer(Model model){
+
+        return new ModelAndView("add-friend", "addContactForm ", new AddContactForm());
+    }
+    @PostMapping("/add-friend")
+    public ModelAndView showContacForm(Model model, @ModelAttribute("addContactForm") AddContactForm form){
+//        transferService. addContactForm(form);
+
+        return new ModelAndView("/profile");
 
     }
 

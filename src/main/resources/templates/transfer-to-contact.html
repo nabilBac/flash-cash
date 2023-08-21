@@ -19,43 +19,27 @@
         <div class="col-md-6 offset-md-3">
             <form th:action="@{/transfer-to-contact}"th:object="${transferForm}"  method="post" class="needs-validation" novalidate>
 
-
-
                  <div class="form-group">
-                                                                                    <!--                    <label for="senderEmail">Your Email</label>-->
+
                         <select th:field="*{contactEmail}" >
                             <option value="default">chose a contact</option>
                             <option th:each="email :${linksEmail}"th:value="${email}"th:utext="${email}"/>
                         </select>
+
                          <div class="pricing p-3 rounded mt-4 d-flex justify-content-between" >
                              <input type="text"th:field="*{amount}"
-                                    class=""
+                                    class="form-control floatingInput"
+                                    id="floatingInputAmount" placeholder="amount"/>
+                             <label for="floatingInputAmount"></label>
+                         </div>
 
+                        <div class="mt-3">
+                            <button class="btn btn-primary btn-block payment-button" type="submit">transfer<i
+                                    class="fa fa-long-arrow-right"></i></button>
+                        </div>
 
+                 </div>
 
-                         </div>                                                                          <!--                    <input type="email" class="form-control" id="senderEmail" name="senderEmail" required>-->
-                                                                                                                    <!--                    <div class="invalid-feedback">-->
-                                                                                                                    <!--                        Please enter your email.-->
-                                                                                                                    <!--                    </div>-->
-                                                </div>
-<!--                <div class="form-group">-->
-<!--                    <label for="recipientEmail">Recipient's Email</label>-->
-<!--                    <select class="form-control" id="recipientEmail" name="recipientEmail" required>-->
-<!--                        <option value="" disabled selected>Select recipient</option>-->
-<!--                        <option th:each="email : ${linksEmail}" th:value="${email}" th:text="${email}"></option>-->
-<!--                    </select>-->
-<!--                    <div class="invalid-feedback">-->
-<!--                        Please select a recipient.-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="form-group">-->
-<!--                    <label for="amount">Amount</label>-->
-<!--                    <input type="number" class="form-control" id="amount" name="amount" required>-->
-<!--                    <div class="invalid-feedback">-->
-<!--                        Please enter the amount to transfer.-->
-<!--                    </div>-->
-<!--                </div>-->
-                <button type="submit" class="btn btn-primary">Transfer</button>
             </form>
         </div>
     </div>
@@ -65,6 +49,25 @@
     <p>&copy; 2023 Flash Cash. All rights reserved.</p>
 </footer>
 
-<!-- ... (votre lien vers bootstrap.min.js si nécessaire) ... -->
 </body>
 </html>
+<!--<form action="@{/transfer-friend}" th:action="${transfers}" th:object="${transfers}" method="POST">-->
+<!--    <h2 class="display-6 text-center mb-4">My last transfer</h2>-->
+<!--    <div th:each="transfer : ${transfer}">-->
+<!--        <div class="row row-cols-1 row-cols-md-9 mb-9 text-center">-->
+<!--            <div class="col">-->
+<!--                <div class="card-list mb-4 rounded-3 shadow-sm">-->
+<!--                    <div class="card-header py-3">-->
+<!--                        <h4 th:text="${transfer.to.email}" class="my-0 fw-normal"></h4>-->
+<!--                    </div>-->
+<!--                    <div class="card-body">-->
+<!--                        <h1 class="card-title pricing-card-title"><small class="text-muted fw-light"></small></h1>-->
+<!--                        <ul class="list-unstyled at-3 mb-4">-->
+<!--                            <li>date: <span th:text="${#temporals.format(transfer.date, 'dd-MM-yyyy HH:mm')}"></span></li>-->
+<!--                            <li>Amount transfered to <em th:text="${transfer.to.email}"/>: <span th:text="${transfer.amountBeforeFee}"></span></li>-->
+<!--                            <li>total amount after fee: <span th:text="${transfer.amountAfterFee}"></span></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->

@@ -8,4 +8,6 @@ public class TransferToFlashCashForm {
 
     private double amount;
 
+    public TransferToFlashCashForm() {
+    }
 }
