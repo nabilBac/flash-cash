@@ -61,12 +61,15 @@ public class TransferController {
     }
     @GetMapping("/add-friend")
     public ModelAndView transfer(Model model){
-
-        return new ModelAndView("add-friend", "addContactForm ", new AddContactForm());
+        model.addAttribute("addContactForm ", new AddContactForm());
+        return new ModelAndView("add-friend");
     }
+
+
+
     @PostMapping("/add-friend")
-    public ModelAndView showContacForm(Model model, @ModelAttribute("addContactForm") AddContactForm form){
-//        transferService. addContactForm(form);
+    public ModelAndView showContactForm(Model model, @ModelAttribute("addContactForm") AddContactForm form){
+//       transferService. addContactForm(form);
 
         return new ModelAndView("/profile");
 

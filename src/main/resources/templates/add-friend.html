@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html  xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,12 +16,28 @@
         <div class="card-body">
           <h2 class="card-title text-center">Add a Friend</h2>
           <form th:action="@{/add-friend}" th:object="${addContactForm}" method="POST">
-            <div class="form-group">
-              <label for="email" class="minimalist-label">Email:</label> <!-- Ajoutez la classe minimalist-label ici -->
-              <input type="text" th:field="*{email}" class="form-control minimalist-input" id="email" name="email" required> <!-- Ajoutez la classe minimalist-input ici -->
-            </div>
-            <button type="submit" class="btn btn-primary btn-block">Add Friend</button>
+            <div class="container mt-5 mb-5 d-flex justify-content-center">
+              <div class="card p-5">
+                <div><h4 class="heading">Add a contact email</h4>
+
+                  <div class="pricing p-3 rounded mt-4 d-flex justify-content-between">
+                    <input type="text" th:field="*{email}"
+                           class="form-control floatingInput" name="email"
+                           id="floatingInputAmount" placeholder="email"/>
+                    <label for="floatingInputAmount"></label>
+                  </div>
+
+
+
+                  <div class="mt-3">
+                    <button class="btn btn-primary btn-block payment-button" type="submit">Add contact<i
+                            class="fa fa-long-arrow-right"></i></button>
+                  </div>
+                </div>
+
+
           </form>
+
         </div>
       </div>
     </div>
