@@ -6,10 +6,13 @@
     <title>Flash Cash - Accueil</title>
     <link rel="stylesheet" href="bootstrap.min.css">
     <link rel="stylesheet" href="index.css"> <!-- Ajoutez le lien vers votre fichier CSS personnalisé -->
+
 </head>
 <body classe="z">
 <header class="header">
-    <h1 class="logo2">Flash Cash</h1>
+    <div class="text-center logo-container">
+        <img th:src="@{/images/logo.png}" alt="Logo" class="logo">
+    </div>
     <nav class="nav">
         <ul>
             <li><a href="@/login">Se connecter</a></li>

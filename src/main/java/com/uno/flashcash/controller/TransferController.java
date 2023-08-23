@@ -56,12 +56,15 @@ public class TransferController {
         transferService.transfer(form);
         List<Transfer> transfers = transferService.findTransactions();
         model.addAttribute("transfer", transfers);
-        return new ModelAndView("transfer");
+        User user = sessionService.sessionUser();
+        model.addAttribute("user",user);
+
+        return new ModelAndView("profile");
 
     }
     @GetMapping("/add-friend")
     public ModelAndView transfer(Model model){
-        model.addAttribute("addContactForm ", new AddContactForm());
+        model.addAttribute("addContactForm", new AddContactForm());
         return new ModelAndView("add-friend");
     }
 
@@ -69,8 +72,9 @@ public class TransferController {
 
     @PostMapping("/add-friend")
     public ModelAndView showContactForm(Model model, @ModelAttribute("addContactForm") AddContactForm form){
-//       transferService. addContactForm(form);
-
+      transferService. addContactForm(form);
+        User user = sessionService.sessionUser();
+        model.addAttribute("user",user);
         return new ModelAndView("/profile");
 
     }

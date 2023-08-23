@@ -11,6 +11,17 @@ body {
     justify-content: center;
     min-height: 100vh;
 }
+.form-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            margin: auto;
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+        }
+
 
      .custom-logo {
             border: none; /* Supprime la bordure */
@@ -19,19 +30,7 @@ body {
 
 
 /* Style pour le conteneur du formulaire */
-.form-container {
-    background-color: rgba(255, 255, 255, 0.9); /* Légère opacité au fond blanc */
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2); /* Ombre légère */
-    width: 70%; /* Ajustez la largeur comme vous le souhaitez */
-    max-width: 600px; /* Limiter la largeur maximale */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin: 50px auto; /* Ajustez les marges pour centrer le formulaire */
-}
+
 
 /* Styliser le titre du formulaire */
 .form-container h1 {
@@ -77,6 +76,7 @@ body {
     border: none; /* Supprime la bordure */
     outline: none; /* Supprime le contour */
 }
+
 
 
 /* Logo personnalisé */
@@ -437,6 +437,43 @@ ul li strong {
 .minimalist-button:hover {
   background-color: #0056b3;
 }
+/*---------------------------------------------------*/
+       .minimalist-form {
+            background-color: #f7f7f7;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .minimalist-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .minimalist-input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            width: 100%;
+        }
+
+        .minimalist-button {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 3px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .minimalist-button:hover {
+            background-color: #0056b3;
+        }
+           .logo-container {
+                    margin-right: 20px;
+                }
 
 
 
